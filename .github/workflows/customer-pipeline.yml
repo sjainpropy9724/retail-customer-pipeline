@@ -1,0 +1,25 @@
+name: Customer Processing Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  customer-processing:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Execute Customer Processing Script
+        run: python customer_processing.py
+
+      - name: Display Success Message
+        run: echo "Customer Processing Completed Successfully"
